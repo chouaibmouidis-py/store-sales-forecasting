@@ -1,0 +1,15 @@
+# Competition data and generated submissions
+data/
+*.csv
+*.parquet
+
+# Notebook and Python artifacts
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+
+# Local environments and editor files
+.venv/
+venv/
+.DS_Store
+.vscode/
