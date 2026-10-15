@@ -75,4 +75,4 @@ Puis lancer Jupyter et exécuter les cellules dans l'ordre. L'entraînement XGBo
 
 ## Données et licence
 
-Les données de la compétition ne sont pas redistribuées dans ce dépôt. Télécharge-les depuis la [page Kaggle de la compétition](https://www.kaggle.com/competitions/store-sales-time-series-forecasting/data) et respecte ses règles d'utilisation. Aucune licence de réutilisation du code n'est définie pour le moment.
+Les données de la compétition ne sont pas redistribuées dans ce dépôt. Elles sont téléchargeables depuis la [page Kaggle de la compétition](https://www.kaggle.com/competitions/store-sales-time-series-forecasting/data) et sous le respecte des règles d'utilisation. Aucune licence de réutilisation du code n'est définie pour le moment.
