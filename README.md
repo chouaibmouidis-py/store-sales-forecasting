@@ -22,8 +22,6 @@ La soumission 25/75 a également atteint le **104e rang sur 1 520 participants
 - Transformation de la cible avec `log1p(sales)` ; évaluation en RMSLE.
 - Variables calendaires, informations magasins et jours fériés, transactions, promotions, lags et statistiques glissantes.
 - Validation chronologique sur sept fenêtres non chevauchantes ; aucune validation aléatoire des dates.
-- Régression directe LightGBM entraînée sur CPU.
-- Modèle XGBoost à deux étapes entraîné sur GPU :
   1. classifier la probabilité que les ventes soient positives ;
   2. estimer les ventes logarithmiques conditionnellement aux ventes positives.
 - Mélange des sorties des deux modèles dans l'espace logarithmique, avec un poids de 25 % LightGBM et 75 % XGBoost.
@@ -41,17 +39,16 @@ Les fenêtres historiques couvrent 2016-10 à 2017-08. Le dernier fold contient 
 
 ## Exécution sur Kaggle
 
-1. Ouvrir le notebook dans Kaggle.
-2. Ajouter le dataset de la compétition comme entrée du notebook.
-3. Dans **Settings → Accelerator**, activer un GPU.
-4. Exécuter toutes les cellules dans l'ordre.
-5. Récupérer `submission_portfolio_xgb75_lgbm25.csv` dans `/kaggle/working`.
+1. Ouvrez le notebook dans Kaggle.
+2. Ajoutez le dataset de la compétition comme entrée du notebook.
+3. Dans **Settings → Accelerator**, activez l'accélérateur graphique.
+4. Exécuteé toutes les cellules dans l'ordre.
 
-Le notebook vérifie que la version installée de XGBoost est compilée avec CUDA. L'entraînement XGBoost utilise un GPU à la fois ; le modèle LightGBM reste sur CPU.
+Le notebook vérifie que la version installée de XGBoost est compilée avec CUDA. L'entraînement XGBoost utilise le GPU à la fois ; le modèle LightGBM reste sur le CPU.
 
 ## Exécution locale
 
-Python 3.11 est recommandé. Installer les dépendances :
+Python 3.11 est recommandé. Installez les dépendances :
 
 ```bash
 python -m venv .venv
@@ -59,7 +56,7 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-Placer les six fichiers de données fournis par Kaggle dans `data/` :
+Placez les six fichiers de données fournis par Kaggle dans `data/` :
 
 ```text
 data/
@@ -71,7 +68,7 @@ data/
 └── transactions.csv
 ```
 
-Puis lancer Jupyter et exécuter les cellules dans l'ordre. L'entraînement XGBoost requiert une installation compatible CUDA et un GPU disponible ; l'environnement local CPU seul ne suffit pas pour le pipeline complet tel qu'il est configuré.
+Puis lancez Jupyter et exécutez les cellules dans l'ordre. L'entraînement XGBoost requiert une installation compatible CUDA et un GPU disponible ; l'environnement local CPU seul ne suffit pas pour le pipeline complet tel qu'il est configuré, une modification du notebook est requise
 
 ## Données et licence
 
